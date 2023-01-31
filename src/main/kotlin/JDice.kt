@@ -28,7 +28,7 @@ object JDice : KotlinPlugin(
                     val count = if (c.isEmpty()) 1 else c.toInt()
                     val top = d.toInt()
                     if (count > 0 && top > 1) {
-                        val value = random.nextInt(count, count * top) + 1
+                        val value = random.nextInt(count, count * top + 1)
                         subject.sendMessage(message.quote() + value.toString())
                     }
                 }

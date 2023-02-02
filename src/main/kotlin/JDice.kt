@@ -17,7 +17,7 @@ object JDice : KotlinPlugin(
         author("jie65535")
     }
 ) {
-    private val regex = Regex("""(\d*)[dD](\d+)""")
+    private val regex = Regex("""\b(\d*)[dD](\d+)\b""")
     private val random = Random(System.currentTimeMillis())
 
     override fun onEnable() {

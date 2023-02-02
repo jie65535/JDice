@@ -12,7 +12,7 @@ object JDice : KotlinPlugin(
     JvmPluginDescription(
         id = "top.jie65535.dice",
         name = "J Dice",
-        version = "0.1.0",
+        version = "0.1.1",
     ) {
         author("jie65535")
     }

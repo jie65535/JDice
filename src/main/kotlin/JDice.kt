@@ -12,12 +12,12 @@ object JDice : KotlinPlugin(
     JvmPluginDescription(
         id = "top.jie65535.dice",
         name = "J Dice",
-        version = "0.1.1",
+        version = "0.1.2",
     ) {
         author("jie65535")
     }
 ) {
-    private val regex = Regex("""\b(\d*)[dD](\d+)\b""")
+    private val regex = Regex("""\b(\d{0,3})[dD](\d{1,3})\b""")
     private val random = Random(System.currentTimeMillis())
 
     override fun onEnable() {
@@ -27,8 +27,11 @@ object JDice : KotlinPlugin(
                     val (c, d) = it.destructured
                     val count = if (c.isEmpty()) 1 else c.toInt()
                     val top = d.toInt()
-                    if (count > 0 && top > 1) {
-                        val value = random.nextInt(count, count * top + 1)
+                    if (count > 0 && count <= 100 && top > 1 && top <= 100) {
+                        var value = 0
+                        for (i in 1..count) {
+                            value += random.nextInt(1, top + 1)
+                        }
                         subject.sendMessage(message.quote() + value.toString())
                     }
                 }

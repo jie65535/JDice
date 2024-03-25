@@ -13,12 +13,12 @@ object JDice : KotlinPlugin(
     JvmPluginDescription(
         id = "top.jie65535.dice",
         name = "J Dice",
-        version = "0.1.2",
+        version = "0.2.0",
     ) {
         author("jie65535")
     }
 ) {
-    private val regex = Regex("""\b(\d{0,3})[dD](\d{1,3})\b""")
+    private val regex = Regex("""\b(\d{0,3})[dD]([1-9]\d{0,2})\b""")
     private val random = Random(System.currentTimeMillis())
 
     override fun onEnable() {
@@ -37,7 +37,7 @@ object JDice : KotlinPlugin(
                     } else {
                         null
                     }
-                }.joinToString().let {
+                }.filter{ it != null }.joinToString().let {
                     if (it.isNotEmpty())
                         subject.sendMessage(message.quote() + it)
                 }
